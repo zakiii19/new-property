@@ -1,0 +1,389 @@
+:root {
+    --bg-color: #f8f9fa;
+    --card-bg: #ffffff;
+    --primary-blue: #2563eb;
+    --red: #dc1c1c;
+    --yellow: #fbb901;
+    --dark-blue: #0f172a; /* Warna tombol simpan */
+    --text-color: #374151;
+    --label-color: #6b7280;
+    --border-color: #e5e7eb;
+    --input-bg: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+    background: var(--card-bg);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 2rem;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    background: var(--primary-blue);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-text {
+    font-weight: 700;
+    font-size: 1.1rem;
+    line-height: 1.2;
+    color: var(--dark-blue);
+}
+
+.logo-text small {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: var(--label-color);
+}
+
+.logo-text .highlight {
+    color: var(--primary-blue);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--label-color);
+    font-size: 0.9rem;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--dark-blue);
+}
+
+/* Container Grid */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 350px 1fr; /* Kiri tetap, kanan fleksibel */
+    gap: 30px;
+    align-items: start;
+}
+
+/* Cards */
+.card, .preview-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+/* Tambahan untuk Preview Image */
+/* .preview-card {
+    position: relative;
+    overflow: hidden; 
+    padding: 0; 
+} */
+
+#previewImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Kunci agar gambar proporsional (crop otomatis) */
+    display: block;
+}
+
+.preview-card {
+    width: 100%;
+    /* Ini membuat kotak mengikuti rasio 1080:1350 (4:5) secara responsif */
+    aspect-ratio: 1080 / 1350; 
+    background: #e5e7eb; /* Warna abu-abu saat kosong */
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Canvas akan menyesuaikan lebar kartu, tapi resolusi aslinya tetap 1080x1350 */
+#resultCanvas {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.form-section {
+    padding: 20px;
+}
+
+.card-header {
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Upload Area */
+.upload-area {
+    border: 2px dashed #d1d5db;
+    border-radius: 12px;
+    padding: 30px 20px;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 20px;
+    background: #f9fafb;
+    transition: background 0.3s;
+}
+
+.upload-area:hover {
+    background: #f3f4f6;
+}
+
+.icon-circle {
+    background: #e0e7ff;
+    color: var(--primary-blue);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+    font-size: 1.2rem;
+}
+
+.upload-text {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--dark-blue);
+}
+
+.upload-sub {
+    font-size: 0.75rem;
+    color: #9ca3af;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #9ca3af;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-input:focus {
+    border-color: var(--primary-blue);
+}
+
+/* Styling untuk Checklist Button (Chips) */
+.checkbox-group {
+    display: flex;
+    gap: 10px;
+}
+
+/* Sembunyikan checkbox asli */
+.hidden-chk {
+    display: none;
+}
+
+/* Tampilan tombol (Label) */
+.chip-btn {
+    flex: 1; /* Agar lebar tombol sama rata */
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--label-color);
+    background: white;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* Efek Hover */
+.chip-btn:hover {
+    background: #f3f4f6;
+}
+
+/* KETIKA DIPILIH (Checked) - Warna Biru */
+.hidden-chk:checked + .chip-btn {
+    background: var(--red);
+    color: white;
+    border-color: var(--red);
+    box-shadow: 0 2px 4px rgba(37, 99, 235, 0.3);
+}
+
+/* Opsional: Warna berbeda untuk DISEWA (misal Hijau Teal) */
+/* Uncomment jika ingin warna beda */
+#chkSewa:checked + .chip-btn {
+    background: var(--yellow);
+    border-color: var(--yellow);
+    box-shadow: 0 2px 4px rgba(13, 148, 136, 0.3);
+} 
+
+/* Detail Section Box */
+.detail-section {
+    background: #f9fafb;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.section-label {
+    margin-bottom: 10px;
+    color: #9ca3af;
+}
+
+/* Input with Suffix (m2, W) */
+.input-suffix {
+    position: relative;
+}
+
+.input-suffix .suffix {
+    position: absolute;
+    right: 12px;
+    top: 32px; /* Adjust based on label height + padding */
+    font-size: 0.85rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+/* Buttons */
+.btn-save {
+    background: var(--dark-blue);
+    color: white;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.btn-download {
+    background: var(--primary-blue);
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 50px; /* Pill shape */
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+}
+
+.btn-download:hover, .btn-save:hover {
+    opacity: 0.9;
+}
+
+/* Right Column (Preview) */
+.preview-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.preview-card {
+    width: 100%;
+    aspect-ratio: 1 / 0.9; /* Kotak besar */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    background: white;
+}
+
+.action-area {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Loading Spinner Animation */
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(37, 99, 235, 0.1);
+    border-left-color: var(--primary-blue);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PropertyGen MVC</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="nav-brand">
+            <div class="logo-icon"><i class="fa-solid fa-house"></i></div>
+            <div class="logo-text">
+                PropertyGen <span class="highlight">MVC</span>
+                <small>React Frontend Client</small>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#" class="active">My Listings</a></li>
+            <li><a href="#">Settings</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+
+        <section class="card form-section">
+            <div class="card-header">
+                <i class="fa-solid fa-table-columns"></i> Input Data Properti
+            </div>
+
+            <form id="propertyForm">
+                <div class="upload-area" id="uploadBox">
+                    <div class="upload-content">
+                        <div class="icon-circle">
+                            <i class="fa-solid fa-camera"></i>
+                        </div>
+                        <p class="upload-text">Klik untuk Upload Foto</p>
+                        <p class="upload-sub">Format JPG/PNG (Max 5MB)</p>
+                        <input type="file" id="fileInput" hidden>
+                    </div>
+                </div>
+
+                <!-- <div class="form-group">
+                    <label>JUDUL LISTING</label>
+                    <input type="text" value="Rumah Modern" class="form-input">
+                </div> -->
+
+                <div class="form-group">
+                    <label>JUDUL LISTING</label>
+                    <input type="text" id="inputJudul" class="form-input" placeholder="Ketik judul...">
+                </div>
+
+                <div class="form-group">
+                    <label>JENIS TRANSAKSI</label>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="chkJual" value="DIJUAL" class="hidden-chk">
+                        <label for="chkJual" class="chip-btn">
+                            <i class="fa-solid fa-tag"></i> DIJUAL
+                        </label>
+
+                        <input type="checkbox" id="chkSewa" value="DISEWA" class="hidden-chk">
+                        <label for="chkSewa" class="chip-btn">
+                            <i class="fa-solid fa-key"></i> DISEWA
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>HARGA</label>
+                        <input type="text" value="Rp 1.250.000.000" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label>KODE LISTING</label>
+                        <input type="text" value="LJH-01" class="form-input">
+                    </div>
+                </div>
+
+                <!-- <div class="detail-section">
+                    <label class="section-label">SPESIFIKASI DETAIL</label>
+
+                    <div class="form-row">
+                        <div class="form-group input-suffix">
+                            <label>LUAS TANAH</label>
+                            <input type="number" value="120" class="form-input">
+                            <span class="suffix">m²</span>
+                        </div>
+                        <div class="form-group input-suffix">
+                            <label>LUAS BANGUNAN</label>
+                            <input type="number" value="90" class="form-input">
+                            <span class="suffix">m²</span>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>KAMAR TIDUR</label>
+                            <input type="number" value="3" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label>KAMAR MANDI</label>
+                            <input type="number" value="2" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label>GARASI / CARPORT</label>
+                            <input type="number" value="2" class="form-input">
+                        </div>
+                    </div>
+
+                    <div class="form-group input-suffix">
+                        <label>LISTRIK</label>
+                        <input type="number" value="2200" class="form-input">
+                        <span class="suffix">W</span>
+                    </div>
+                </div> -->
+
+                <div class="detail-section">
+                    <label class="section-label">SPESIFIKASI DETAIL</label>
+
+                    <div class="form-row">
+                        <div class="form-group input-suffix">
+                            <label>LUAS TANAH</label>
+                            <input type="number" value="120" class="form-input">
+                            <span class="suffix">m²</span>
+                        </div>
+                        <div class="form-group input-suffix">
+                            <label>LUAS BANGUNAN</label>
+                            <input type="number" value="90" class="form-input">
+                            <span class="suffix">m²</span>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>KAMAR TIDUR</label>
+                            <input type="number" id="inputBed" value="3" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label>KAMAR MANDI</label>
+                            <input type="number" id="inputBath" value="2" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label>GARASI / CARPORT</label>
+                            <input type="number" id="inputCar" value="1" class="form-input">
+                        </div>
+                    </div>
+
+                    <div class="form-group input-suffix">
+                        <label>LISTRIK</label>
+                        <input type="number" value="2200" class="form-input">
+                        <span class="suffix">W</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>KONTAK / WEBSITE</label>
+                    <input type="text" value="agent@property.com" class="form-input">
+                </div>
+
+                <button type="button" class="btn-save">
+                    <i class="fa-solid fa-floppy-disk"></i> Simpan ke Database
+                </button>
+            </form>
+        </section>
+
+        <!-- <section class="preview-section">
+            <div class="preview-card">
+                <div class="loading-spinner"></div>
+            </div>
+            
+            <div class="action-area">
+                <button class="btn-download">
+                    <i class="fa-solid fa-download"></i> Download Hasil
+                </button>
+            </div>
+        </section> -->
+
+        <!-- <section class="preview-section">
+            <div class="preview-card" id="previewCard">
+                <div class="loading-spinner" id="loadingSpinner"></div>
+                <img id="previewImage" src="" alt="Preview Listing" style="display: none;">
+            </div>
+
+            <div class="action-area">
+                <button class="btn-download">
+                    <i class="fa-solid fa-download"></i> Download Hasil
+                </button>
+            </div>
+        </section> -->
+        <section class="preview-section">
+            <div class="preview-card" id="previewCard">
+                <div class="loading-spinner" id="loadingSpinner"></div>
+
+                <canvas id="resultCanvas" width="1080" height="1350" style="display: none;"></canvas>
+            </div>
+
+            <div class="action-area">
+                <button class="btn-download" id="btnDownload">
+                    <i class="fa-solid fa-download"></i> Download Hasil
+                </button>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>
