@@ -22,7 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentImageObj = null;
 
-    
+    // [LOGO] 1. Variabel untuk menyimpan objek Logo
+    let logoObj = null;
+
 
 
     // --- CONFIG ICON (FontAwesome Unicode) ---
@@ -32,6 +34,18 @@ document.addEventListener('DOMContentLoaded', () => {
         car: '\uf1b9',
         buy: '\uf4c0', 
         rent: '\uf084'
+    };
+
+    // [LOGO] 2. Muat Logo Secara Otomatis saat Halaman Dibuka
+    const logoImgLoader = new Image();
+    logoImgLoader.src = 'logo.png'; // Pastikan nama file sesuai!
+    logoImgLoader.onload = () => {
+        logoObj = logoImgLoader;
+        // Jika user sudah upload foto properti duluan sebelum logo loading selesai, render ulang
+        if(currentImageObj) renderCanvas();
+    };
+    logoImgLoader.onerror = () => {
+        console.warn("Logo tidak ditemukan. Pastikan file 'logo.png' ada di folder yang sama.");
     };
 
     // --- EVENT LISTENERS ---
@@ -81,6 +95,10 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.fillRect(0, 0, canvas.width, canvas.height);
         }
 
+        if (logoObj) {
+            drawLogo(logoObj);
+        }
+
         // Konfigurasi Dimensi
         const margin = 40;
         const barHeight = 98;
@@ -95,6 +113,30 @@ document.addEventListener('DOMContentLoaded', () => {
         drawCenteredFloatingBar(margin, barTopY, canvas.width - (margin * 2), barHeight);
 
         
+    }
+
+    function drawLogo(img) {
+        const logoWidth = 200; // Tentukan lebar yang diinginkan (px)
+        // Hitung tinggi otomatis berdasarkan rasio asli logo agar tidak gepeng
+        const aspectRatio = img.height / img.width;
+        const logoHeight = logoWidth * aspectRatio;
+
+        const x = 40; // Jarak dari kiri
+        const y = 40; // Jarak dari atas
+
+        // Tambahkan shadow sedikit agar logo pop-up jika background putih
+        ctx.shadowColor = "rgba(0,0,0,0.3)";
+        ctx.shadowBlur = 10;
+        ctx.shadowOffsetX = 2;
+        ctx.shadowOffsetY = 2;
+
+        ctx.drawImage(img, x, y, logoWidth, logoHeight);
+
+        // Reset shadow
+        ctx.shadowColor = "transparent";
+        ctx.shadowBlur = 0;
+        ctx.shadowOffsetX = 0;
+        ctx.shadowOffsetY = 0;
     }
 
     // B. Gambar Gradient Hitam di Bawah (Supaya teks putih terbaca)
