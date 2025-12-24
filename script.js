@@ -22,6 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentImageObj = null;
 
+    
+
+
     // --- CONFIG ICON (FontAwesome Unicode) ---
     const icons = {
         bed: '\uf236',
@@ -84,13 +87,29 @@ document.addEventListener('DOMContentLoaded', () => {
         const barBottomY = canvas.height - 50; 
         const barTopY = barBottomY - barHeight;
 
+        drawShadow(); 
         // 2. Gambar JUDUL LISTING
         drawMainTitle(inputJudul.value, margin, barTopY - 20);
 
         // 3. Gambar FLOATING BAR (Rata Tengah)
         drawCenteredFloatingBar(margin, barTopY, canvas.width - (margin * 2), barHeight);
+
+        
     }
 
+    // B. Gambar Gradient Hitam di Bawah (Supaya teks putih terbaca)
+        // Gradient dari transparan (atas) ke hitam (bawah)
+    function drawShadow(){
+        const gradientHeight = 400; // Tinggi area bayangan
+        const yStart = canvas.height - gradientHeight;
+        
+        const gradient = ctx.createLinearGradient(0, yStart, 0, canvas.height);
+        gradient.addColorStop(0, "rgba(0, 0, 0, 0)");       // Transparan
+        gradient.addColorStop(1, "rgba(0, 0, 0, 0.8)");     // Hitam pekat
+
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, yStart, canvas.width, gradientHeight);
+    }
     // --- FUNGSI 1: Render Judul ---
     function drawMainTitle(text, x, y) {
         ctx.save();
