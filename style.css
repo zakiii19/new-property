@@ -92,7 +92,7 @@ body {
     margin: 0 auto;
     padding: 0 20px;
     display: grid;
-    grid-template-columns: 350px 1fr; /* Kiri tetap, kanan fleksibel */
+    grid-template-columns: 350px 350px 1fr; /* Kiri tetap, kanan fleksibel */
     gap: 30px;
     align-items: start;
 }
