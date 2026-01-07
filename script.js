@@ -1,15 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // --- ELEMEN DOM ---
     const uploadBox = document.getElementById('uploadBox');
     const fileInput = document.getElementById('fileInput');
     const inputJudul = document.getElementById('inputJudul');
-    
+
     // Input Spesifikasi
     const inputBed = document.getElementById('inputBed');
     const inputBath = document.getElementById('inputBath');
     const inputCar = document.getElementById('inputCar');
-    
+
     // Checkbox Transaksi
     const chkJual = document.getElementById('chkJual');
     const chkSewa = document.getElementById('chkSewa');
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         bed: '\uf236',
         bath: '\uf2cd',
         car: '\uf1b9',
-        buy: '\uf4c0', 
+        buy: '\uf4c0',
         rent: '\uf084'
     };
 
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
     logoImgLoader.onload = () => {
         logoObj = logoImgLoader;
         // Jika user sudah upload foto properti duluan sebelum logo loading selesai, render ulang
-        if(currentImageObj) renderCanvas();
+        if (currentImageObj) renderCanvas();
     };
     logoImgLoader.onerror = () => {
         console.warn("Logo tidak ditemukan. Pastikan file 'logo.png' ada di folder yang sama.");
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const allInputs = [inputJudul, inputBed, inputBath, inputCar, chkJual, chkSewa];
     allInputs.forEach(el => {
-        if(el) {
+        if (el) {
             el.addEventListener('input', renderCanvas);
             el.addEventListener('change', renderCanvas);
         }
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderCanvas() {
         // 1. Reset & Gambar Foto Background
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
+
         if (currentImageObj) {
             drawImageProp(ctx, currentImageObj, 0, 0, canvas.width, canvas.height);
         } else {
@@ -102,17 +102,17 @@ document.addEventListener('DOMContentLoaded', () => {
         // Konfigurasi Dimensi
         const margin = 40;
         const barHeight = 98;
-        const barBottomY = canvas.height - 50; 
+        const barBottomY = canvas.height - 50;
         const barTopY = barBottomY - barHeight;
 
-        drawShadow(); 
+        drawShadow();
         // 2. Gambar JUDUL LISTING
         drawMainTitle(inputJudul.value, margin, barTopY - 20);
 
         // 3. Gambar FLOATING BAR (Rata Tengah)
         drawCenteredFloatingBar(margin, barTopY, canvas.width - (margin * 2), barHeight);
 
-        
+
     }
 
     function drawLogo(img) {
@@ -140,11 +140,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // B. Gambar Gradient Hitam di Bawah (Supaya teks putih terbaca)
-        // Gradient dari transparan (atas) ke hitam (bawah)
-    function drawShadow(){
+    // Gradient dari transparan (atas) ke hitam (bawah)
+    function drawShadow() {
         const gradientHeight = 400; // Tinggi area bayangan
         const yStart = canvas.height - gradientHeight;
-        
+
         const gradient = ctx.createLinearGradient(0, yStart, 0, canvas.height);
         gradient.addColorStop(0, "rgba(0, 0, 0, 0)");       // Transparan
         gradient.addColorStop(1, "rgba(0, 0, 0, 0.8)");     // Hitam pekat
@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.fillStyle = "#FFFFFF";
         ctx.textAlign = "left";
         ctx.textBaseline = "bottom";
-        
+
         ctx.shadowColor = "rgba(0,0,0,0.8)";
         ctx.shadowBlur = 15;
         ctx.shadowOffsetX = 4;
@@ -178,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.shadowBlur = 20;
         ctx.shadowOffsetY = 10;
         ctx.fillStyle = "#1f1f1f"; // Dark Grey
-        
+
         if (ctx.roundRect) {
             ctx.beginPath();
             ctx.roundRect(barX, barY, barWidth, barHeight, 20);
@@ -186,14 +186,14 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             ctx.fillRect(barX, barY, barWidth, barHeight);
         }
-        
+
         // Reset shadow untuk konten
         ctx.shadowColor = "transparent";
         ctx.shadowBlur = 0;
         ctx.shadowOffsetY = 0;
 
         // --- LOGIKA PERHITUNGAN TENGAH (CENTERING) ---
-        
+
         // 1. Definisikan Ukuran Item
         const specItemWidth = 220; // Lebar per item spesifikasi (ikon + teks)
         const btnWidth = 130;      // Lebar tombol
@@ -267,23 +267,23 @@ document.addEventListener('DOMContentLoaded', () => {
     function drawSpecItem(spec, x, y) {
         // Icon
         ctx.fillStyle = "#FFFFFF";
-        ctx.font = `900 35px "Font Awesome 6 Free"`; 
+        ctx.font = `900 35px "Font Awesome 6 Free"`;
         ctx.textAlign = "left";
         ctx.textBaseline = "middle";
         ctx.fillText(spec.icon, x, y);
 
         // Text Group Offset
-        const textX = x + 50; 
-        
+        const textX = x + 50;
+
         // Label
         ctx.font = "600 22px 'Inter', sans-serif";
-        ctx.fillStyle = "#ffffff"; 
+        ctx.fillStyle = "#ffffff";
         ctx.textBaseline = "bottom";
         ctx.fillText(spec.label, textX, y - 2);
 
         // Value
         ctx.font = "400 19px 'Inter', sans-serif";
-        ctx.fillStyle = "#FFFFFF"; 
+        ctx.fillStyle = "#FFFFFF";
         ctx.textBaseline = "top";
         ctx.fillText(spec.val, textX, y + 2);
     }
@@ -308,9 +308,9 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.fillStyle = textColor;
         ctx.textAlign = "center"; // Center horizontal relative to button center
         ctx.textBaseline = "middle";
-        
+
         const btnCenterX = x + (w / 2);
-        
+
         // Kita gambar manual supaya presisi icon di kiri teks
         // Hitung lebar total isi tombol (icon + space + text) untuk centering di dalam tombol
         ctx.font = "600 20px 'Inter', sans-serif";
@@ -318,8 +318,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const iconWidth = 41; // estimasi
         const gap = 0;
         const totalContentW = iconWidth + gap + textWidth;
-        
-        let contentStartX = btnCenterX - (totalContentW / 2)-8;
+
+        let contentStartX = btnCenterX - (totalContentW / 2) - 8;
 
         // Draw Icon
         ctx.textAlign = "left";
@@ -345,12 +345,12 @@ document.addEventListener('DOMContentLoaded', () => {
         offsetX = 0.5; offsetY = 0.5;
         var iw = img.width, ih = img.height, r = Math.min(w / iw, h / ih),
             nw = iw * r, nh = ih * r, cx, cy, cw, ch, ar = 1;
-        if (nw < w) ar = w / nw;                             
+        if (nw < w) ar = w / nw;
         if (Math.abs(ar - 1) < 1e-14 && nh < h) ar = h / nh;
         nw *= ar; nh *= ar; cw = iw / (nw / w); ch = ih / (nh / h);
         cx = (iw - cw) * offsetX; cy = (ih - ch) * offsetY;
         if (cx < 0) cx = 0; if (cy < 0) cy = 0;
         if (cw > iw) cw = iw; if (ch > ih) ch = ih;
-        ctx.drawImage(img, cx, cy, cw, ch,  x, y, w, h);
+        ctx.drawImage(img, cx, cy, cw, ch, x, y, w, h);
     }
 });
