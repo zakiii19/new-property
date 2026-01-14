@@ -1,0 +1,148 @@
+import React from 'react'
+import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+
+function FormPropertyComponent() {
+  return (
+    <div class="shadow-md p-2 m-2 rounded-lg bg-gray-100 font-[inter] text-neutral-800">
+        <div class="font-bold ">
+          <i class=""></i> Input Data Properti
+        </div>
+
+        <form id="propertyForm">
+          <div class="upload-area px-30 py-20 border-2 border-gray-300 border-dashed rounded-lg bg-gray-200" id="uploadBox">
+            <div class="upload-content">
+              <div class="icon-circle">
+                <i class="fa-solid fa-camera"></i>
+              </div>
+              <p class="upload-text">Klik untuk Upload Foto</p>
+              <p class="upload-sub">Format JPG/PNG (Max 5MB)</p>
+              <input type="file" id="fileInput" hidden />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>JUDUL LISTING</label>
+            <input
+              type="text"
+              id="inputJudul"
+              class="form-input"
+              placeholder="Ketik judul..."
+            />
+          </div>
+
+          <div class="form-group">
+            <label>JENIS TRANSAKSI</label>
+            <div class="checkbox-group">
+              <input
+                type="checkbox"
+                id="chkJual"
+                value="DIJUAL"
+                class="hidden-chk"
+              />
+              <label for="chkJual" class="chip-btn">
+                <i class="fa-solid fa-tag"></i> DIJUAL
+              </label>
+
+              <input
+                type="checkbox"
+                id="chkSewa"
+                value="DISEWA"
+                class="hidden-chk"
+              />
+              <label for="chkSewa" class="chip-btn">
+                <i class="fa-solid fa-key"></i> DISEWA
+              </label>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>HARGA</label>
+              <input
+                type="text"
+                placeholder="Masukkan harga..."
+                class="form-input"
+              />
+            </div>
+            <div class="form-group">
+              <label>KODE LISTING</label>
+              <input type="text" value="HST0177" class="form-input" />
+            </div>
+          </div>
+          <div class="detail-section">
+            <label class="section-label">SPESIFIKASI DETAIL</label>
+
+            <div class="form-row">
+              <div class="form-group input-suffix">
+                <label>LUAS TANAH</label>
+                <input type="number" value="120" class="form-input" />
+                <span class="suffix">m²</span>
+              </div>
+              <div class="form-group input-suffix">
+                <label>LUAS BANGUNAN</label>
+                <input type="number" value="90" class="form-input" />
+                <span class="suffix">m²</span>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group input-suffix">
+                <label>HADAP</label>
+                <input type="text" value="barat" class="form-input" />
+              </div>
+              <div class="form-group input-suffix">
+                <label>JUMLAH LANTAI</label>
+                <input type="number" value="90" class="form-input" />
+                <span class="suffix">m²</span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>KAMAR TIDUR</label>
+                <input
+                  type="number"
+                  id="inputBed"
+                  value="3"
+                  class="form-input"
+                />
+              </div>
+              <div class="form-group">
+                <label>KAMAR MANDI</label>
+                <input
+                  type="number"
+                  id="inputBath"
+                  value="2"
+                  class="form-input"
+                />
+              </div>
+              <div class="form-group">
+                <label>GARASI / CARPORT</label>
+                <input
+                  type="number"
+                  id="inputCar"
+                  value="1"
+                  class="form-input"
+                />
+              </div>
+            </div>
+
+            <div class="form-group input-suffix">
+              <label>LISTRIK</label>
+              <input type="number" value="2200" class="form-input" />
+              <span class="suffix">W</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>KONTAK / WEBSITE</label>
+            <input type="text" value="agent@property.com" class="form-input" />
+          </div>
+
+          <button type="button" class="btn-save">
+            <i class="fa-solid fa-floppy-disk"></i> Simpan ke Database
+          </button>
+        </form>
+    </div>
+  )
+}
+
+export default FormPropertyComponent

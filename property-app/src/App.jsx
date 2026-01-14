@@ -1,15 +1,23 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import Navbar from './components/Navbar'
+import Navbar from './components/NavbarComponent'
+import { Brochure } from './pages/Brochure'
 
-function App() {
-  // const [count, setCount] = useState(0)
+const App = () => {
+
 
   return (
     <>
-    <Navbar />
+    <Router>
+      <Routes>
+        <Route path ='/' element={<Brochure/>} />
+      </Routes>
+    </Router>
+    {/* <Navbar />
+
       <h1 class="text-3xl font-bold underline">
         Hello world!
       </h1>
@@ -32,7 +40,7 @@ function App() {
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
-      </p> */}
+      </p> */} 
 
     </>
   )
