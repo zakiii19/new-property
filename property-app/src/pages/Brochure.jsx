@@ -9,7 +9,7 @@ export const Brochure = () => {
         <>
             <NavbarComponent />
             
-            <div class="flex flex-row">
+            <div className="flex flex-row">
                 <FormPropertyComponent class="basis-md"/>
                 <PreviewPropertyComponent class="basis-lg"/>
 
