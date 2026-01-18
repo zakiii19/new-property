@@ -1,19 +1,17 @@
-import React from 'react'
-import NavbarComponent from '../components/NavbarComponent'
-import FormPropertyComponent from '../components/FormPropertyComponent'
-import PreviewPropertyComponent from '../components/PreviewPropertyComponent'
+import React from "react";
+import Navbar from "../components/Layouts/Navbar";
+import FormProperty from "../components/Fragments/FormProperty";
+import PreviewProperty from "../components/Fragments/PreviewProperty";
+import Button from "../components/Elements/button/Button";
+import { FaHome } from "react-icons/fa";
+import BrochureLayout from "../components/Layouts/BrochureLayout";
 
 
 export const Brochure = () => {
-    return (
-        <>
-            <NavbarComponent />
-            
-            <div className="flex flex-row">
-                <FormPropertyComponent class="basis-md"/>
-                <PreviewPropertyComponent class="basis-lg"/>
-
-            </div>
-        </>
-    )
-}
+  return (
+    <div className="bg-gray-100 min-h-screen">
+      <Navbar />
+      <BrochureLayout/>
+    </div>
+  );
+};
