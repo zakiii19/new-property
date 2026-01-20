@@ -1,9 +1,5 @@
 import React from "react";
 import Navbar from "../components/Layouts/Navbar";
-import FormProperty from "../components/Fragments/FormProperty";
-import PreviewProperty from "../components/Fragments/PreviewProperty";
-import Button from "../components/Elements/button/Button";
-import { FaHome } from "react-icons/fa";
 import BrochureLayout from "../components/Layouts/BrochureLayout";
 
 

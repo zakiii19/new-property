@@ -2,7 +2,7 @@ import React from 'react'
 import FormProperty from '../Fragments/FormProperty'
 import PreviewProperty from '../Fragments/PreviewProperty'
 import Button from '../Elements/button/Button'
-import { FaHome, FaTable } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
 
 const BrochureLayout = () => {
   return (
